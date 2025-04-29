@@ -28,7 +28,7 @@ const Hamburger: React.FC = () => {
       >
         <ul className="my-auto flex flex-col gap-5 text-3xl text-center">
           {Object.entries(URLS).map(([key, value]) => (
-            <li>
+            <li key={key} >
               <Link
                 href={value.href}
                 target="_blank"

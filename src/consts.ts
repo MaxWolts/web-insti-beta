@@ -6,8 +6,8 @@ export const SITE_DESCRIPTION = "Hello";
 export const URLS = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
-  { href: "/collection1", text: "Collection 1" },
-  { href: "/collection2", text: "Collection 2" },
+  { href: "/blog", text: "Collection 1" },
+  { href: "/blog", text: "Collection 2" },
   { href: "/contact", text: "Contact" },
 
 ];

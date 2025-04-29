@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Hamburger from "@/components/react/Hamburger";
+import DeskMenu from "@/components/DeskMenu.astro";
 ---
 
 <!doctype html>
@@ -11,9 +12,10 @@ import Hamburger from "@/components/react/Hamburger";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="flex flex-col items-center min-h-screen">
-    <main class="container px-2 flex flex-col gap-10 overflow-hidden ">
+    <main class="container px-2 flex flex-col gap-10 overflow-hidden mx-auto">
       <slot />
+      <DeskMenu />
     </main>
-    <Hamburger client:load/>
+    <Hamburger client:load />
   </body>
 </html>
