@@ -1,17 +1,39 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
+import HomeMob from "@/components/HomeMob.astro";
+import DeskMenu from "@/components/DeskMenu.astro";
+import VerticalCarousel from "@/components/react/VerticalCarousel";
+import Ribbons from "@/components/react/Ribbons";
 ---
 
 <Layout>
-    <div class="relative">
-        <h1 class="text-7xl leading-22 mt-10 font-semibold bg-white relative inline-block">
-          Watercolor art <br /> pieces
-          <span class="absolute  right-0 h-2 bg-black top-1/2 transform w-52 -translate-y-1/2"></span>
-        </h1>
-      </div>
-  <p class="text-5xl text-right max-w-72 self-end py-10 leading-15">
-    Prints by Spanish Artist
-  </p>
-  <Hero />
+  <div class="md:flex-row flex flex-col gap-10 relative">
+    <div class="relative hidden md:flex flex-1">
+      <h2
+        class="max-w-96 text-7xl absolute text-center z-20 -right-32 bottom-1/2"
+      >
+        Stories of a watercolor artist layers of
+      </h2>
+      <p class="text-xl absolute bottom-1/4 right-0 rotate-90">
+        Spanish Artist
+      </p>
+    </div>
+    <div class="min-h-screen w-5/12 md:block hidden max-h-full overflow-hidden">
+      <VerticalCarousel client:load imageCount={15} basePath="/paints/" />
+    </div>
+    <HomeMob />
+    <Hero />
+    <DeskMenu />
+    <div class="absolute inset-0 hidden md:block">
+      <Ribbons
+        client:load
+        baseThickness={30}
+        speedMultiplier={0.5}
+        maxAge={500}
+        enableFade={false}
+        enableShaderEffect={true}
+      />
+    </div>
+  </div>
 </Layout>

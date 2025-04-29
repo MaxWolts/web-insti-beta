@@ -1,0 +1,15 @@
+---
+// filepath: /home/jramma/Git/lightpaint/src/components/ui/Link.astro
+interface Props {
+  href: string;
+  target?: "_self" | "_blank" | "_parent" | "_top";
+  rel?: string;
+  class?: string;
+}
+
+const { href, target = "_self", rel = "noopener noreferrer", class: className, children } = Astro.props;
+---
+
+<a href={href} target={target} rel={rel} class={className}>
+  {children}
+</a>
