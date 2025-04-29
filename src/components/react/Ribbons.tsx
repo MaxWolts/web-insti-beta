@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
+import React, { useEffect, useRef } from "react";
+import { Renderer, Transform, Vec3, Color, Polyline } from "ogl";
 
 interface RibbonsProps {
   colors?: string[];
@@ -17,17 +17,17 @@ interface RibbonsProps {
 }
 
 const Ribbons: React.FC<RibbonsProps> = ({
-    colors = ['#f4a582', '#92c5de', '#d5e8d4'],
-    baseSpring = 0.03,
+  colors = ["#92c5de"],
+  baseSpring = 0.03,
   baseFriction = 0.9,
-  baseThickness = 30,
-  offsetFactor = 0.05,
-  maxAge = 500,
+  baseThickness = 8,
+  offsetFactor = 0.1,
+  maxAge = 1000,
   pointCount = 50,
-  speedMultiplier = 0.6,
-  enableFade = false,
-  enableShaderEffect = false,
-  effectAmplitude = 2,
+  speedMultiplier = 0.1,
+  enableFade = true,
+  enableShaderEffect = true,
+  effectAmplitude = 1,
   backgroundColor = [0, 0, 0, 0],
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,10 @@ const Ribbons: React.FC<RibbonsProps> = ({
     if (!container) return;
 
     // Create a renderer with an alpha-enabled context.
-    const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true });
+    const renderer = new Renderer({
+      dpr: window.devicePixelRatio || 2,
+      alpha: true,
+    });
     const gl = renderer.gl;
     if (Array.isArray(backgroundColor) && backgroundColor.length === 4) {
       gl.clearColor(
@@ -50,11 +53,11 @@ const Ribbons: React.FC<RibbonsProps> = ({
       gl.clearColor(0, 0, 0, 0);
     }
 
-    gl.canvas.style.position = 'absolute';
-    gl.canvas.style.top = '0';
-    gl.canvas.style.left = '0';
-    gl.canvas.style.width = '100%';
-    gl.canvas.style.height = '100%';
+    gl.canvas.style.position = "absolute";
+    gl.canvas.style.top = "0";
+    gl.canvas.style.left = "0";
+    gl.canvas.style.width = "100%";
+    gl.canvas.style.height = "100%";
     container.appendChild(gl.canvas);
 
     const scene = new Transform();
@@ -134,9 +137,9 @@ const Ribbons: React.FC<RibbonsProps> = ({
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width, height);
-      lines.forEach(line => line.polyline.resize());
+      lines.forEach((line) => line.polyline.resize());
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
 
     const center = (colors.length - 1) / 2;
     colors.forEach((color, index) => {
@@ -190,7 +193,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
       let x: number, y: number;
       if (!container) return;
       const rect = container.getBoundingClientRect();
-      if ('changedTouches' in e && e.changedTouches.length) {
+      if ("changedTouches" in e && e.changedTouches.length) {
         x = e.changedTouches[0].clientX - rect.left;
         y = e.changedTouches[0].clientY - rect.top;
       } else if (e instanceof MouseEvent) {
@@ -204,9 +207,9 @@ const Ribbons: React.FC<RibbonsProps> = ({
       const height = container.clientHeight;
       mouse.set((x / width) * 2 - 1, (y / height) * -2 + 1, 0);
     }
-    container.addEventListener('mousemove', updateMouse);
-    container.addEventListener('touchstart', updateMouse);
-    container.addEventListener('touchmove', updateMouse);
+    container.addEventListener("mousemove", updateMouse);
+    container.addEventListener("touchstart", updateMouse);
+    container.addEventListener("touchmove", updateMouse);
 
     const tmp = new Vec3();
     let frameId: number;
@@ -217,8 +220,9 @@ const Ribbons: React.FC<RibbonsProps> = ({
       const dt = currentTime - lastTime;
       lastTime = currentTime;
 
-      lines.forEach(line => {
-        tmp.copy(mouse)
+      lines.forEach((line) => {
+        tmp
+          .copy(mouse)
           .add(line.mouseOffset)
           .sub(line.points[0])
           .multiply(line.spring);
@@ -245,10 +249,10 @@ const Ribbons: React.FC<RibbonsProps> = ({
     update();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('mousemove', updateMouse);
-      container.removeEventListener('touchstart', updateMouse);
-      container.removeEventListener('touchmove', updateMouse);
+      window.removeEventListener("resize", resize);
+      container.removeEventListener("mousemove", updateMouse);
+      container.removeEventListener("touchstart", updateMouse);
+      container.removeEventListener("touchmove", updateMouse);
       cancelAnimationFrame(frameId);
       if (gl.canvas && gl.canvas.parentNode === container) {
         container.removeChild(gl.canvas);
