@@ -38,6 +38,30 @@ const Hamburger: React.FC = () => {
             </li>
           ))}
         </ul>
+        <div className="flex pb-5">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/icons/insta.svg"
+              alt="Instagram"
+              className="w-10 h-10 mx-2 transition-transform duration-300 hover:scale-110"
+            />
+          </a>
+          <a
+            href="https://www.pinterest.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/icons/pinterest.svg"
+              alt="Pinterest"
+              className="w-10 h-10 mx-2 transition-transform duration-300 hover:scale-110"
+            />
+          </a>
+        </div>
       </nav>
 
       {!isOpen && (
@@ -75,3 +99,5 @@ const Link: React.FC<{
     </a>
   );
 };
+
+  
