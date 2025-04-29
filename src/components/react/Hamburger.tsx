@@ -22,7 +22,7 @@ const Hamburger: React.FC = () => {
       <nav
         className={`flex flex-col items-center  w-full overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen
-            ? "h-screen opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center"
+            ? "h-dvh opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center"
             : "h-0 opacity-0 pointer-events-none"
         }`}
       >
@@ -46,7 +46,7 @@ const Hamburger: React.FC = () => {
         </div>
       )}
 
-      <div className="z-50 absolute right-2 bottom-0">
+      <div className="z-50 absolute right-2 bottom-4">
         <HamburgerIcon toggled={isOpen} toggle={setOpen} />
       </div>
     </div>
