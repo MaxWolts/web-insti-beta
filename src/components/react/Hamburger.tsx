@@ -22,7 +22,7 @@ const Hamburger: React.FC = () => {
       <nav
         className={`flex flex-col items-center  w-full overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen
-            ? "h-screen opacity-100 bg-white"
+            ? "h-screen opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center"
             : "h-0 opacity-0 pointer-events-none"
         }`}
       >
