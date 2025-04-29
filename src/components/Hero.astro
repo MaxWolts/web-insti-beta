@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import img from "../assets/hero.jpg";
+---
+
+<section class="flex relative justify-center">
+    <div class="relative w-1/2">
+  <Image
+    src={img}
+    alt="Watercolor artworks by Silvia Azizaj "
+    class="h-auto object-cover w-full"
+    loading="lazy"
+  />
+  <p class="absolute rotate-90 top-4 -right-10 text-xl font-bold">$250</p></div>
+</section>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import "@/styles/fonts/fonts.css";
+@import "@/styles/fonts/stylesheet.css";
 
 @theme {
-  --font-sans: "Inter", "sans-serif";
+  --font-sans: "Roboto Condensed", "sans-serif";
   --font-germania: "GermaniaOne", "cursive";
   --breakpoint-3xl: 120rem;
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
@@ -11,13 +11,13 @@
 
 @layer base {
   body {
-    font-family: "Inter", "sans-serif";
+    font-family: "Roboto Condensed", "sans-serif";
     .font-germania {
       font-family: "GermaniaOne", "cursive";
     }
   }
 
-  .font-tagesschrift {
-    font-family: "Tagesschrift", serif;
+  .font-londrina{
+    font-family: "Londrina Outline", "cursive";
   }
 }
