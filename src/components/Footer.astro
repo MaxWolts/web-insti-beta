@@ -1,7 +1,36 @@
 ---
-const today = new Date();
+const today = new Date().toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+import Image from "astro/components/Image.astro";
+import Button from "./Button.astro";
+import img from "@/assets/bg.png";
 ---
 
-<footer class="bg-black py-20 w-full mt-auto">
-	
+<footer
+  class="relative pt-10 w-full mt-auto md:pb-40 border-t flex flex-col md:flex-row gap-20"
+>
+  <div class="w-1/2 flex flex-col items-start">
+    <p class="text-5xl font-semibold">Would you like to contact the artist?</p>
+    <Button text="Let's chat" />
+  </div>
+  <div class="md:w-1/2 flex flex-col justify-between">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laboriosam
+      non vel aliquam in rem nesciunt ea maiores totam? Tempore exercitationem
+      commodi,
+    </p>
+    <div class="flex justify-between items-center mt-20 mb-6">
+      <a href="https://jramma.com" target="_blank" class="">jramma &reg;</a>
+
+      <p>{today}</p>
+    </div>
+  </div>
+  <Image
+    src={img}
+    alt="Background"
+    class="absolute bottom-0 object-bottom md:right-40 -rotate-90 h-full opacity-30 -z-10"
+  />
 </footer>

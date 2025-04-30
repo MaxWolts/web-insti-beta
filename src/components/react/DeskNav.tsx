@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pivot as HamburgerIcon } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { URLS } from "@/consts";
 
 export default function Navigation() {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(typeof window !== "undefined" && window.location.pathname === "/") {
+      setOpen(true);
+    }
+  }, []);
+
 
   const handleLinkClick = () => {
     setOpen(false);

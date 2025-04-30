@@ -1,0 +1,33 @@
+---
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+
+const getRandomMargin = () => {
+  const margins = ["mt-36", "mt-72", "mt-56", "mt-96"];
+  return margins[Math.floor(Math.random() * margins.length)];
+};
+var margin = "";
+if (post.id === "img2") {
+  margin = "!mt-0";
+}
+import FormattedDate from "@/components/FormattedDate.astro";
+---
+
+<li class={`md:${getRandomMargin()} + ${margin} relative`}>
+  <a
+    href={`/blog/${post.id}/`}
+    class="relative flex flex-col gap-2 p-6 max-w-96"
+  >
+    <img src={post.data.heroImage} alt="" class="w-full" />
+
+    <p class="date font-semibold text-3xl">
+      <p>{post.data.title}</p>
+    </p>
+  </a>
+  <p class="absolute rotate-90 -right-6 bottom-24  font-bold">
+    <FormattedDate date={post.data.pubDate} />
+  </p>
+</li>

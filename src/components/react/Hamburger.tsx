@@ -31,7 +31,6 @@ const Hamburger: React.FC = () => {
             <li key={key} >
               <Link
                 href={value.href}
-                target="_blank"
                 rel="noopener noreferrer"
                 text={value.text}
               />

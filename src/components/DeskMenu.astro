@@ -4,14 +4,14 @@ import DeskNav from "@/components/react/DeskNav";
 ---
 
 <section
-  class="hidden absolute right-6 md:flex flex-col w-2/12 py-10 justify-between h-full min-h-screen"
+  class="hidden fixed right-6 md:flex flex-col w-2/12 py-10 justify-between h-full min-h-screen"
 >
   <div class="w-full flex justify-end z-10">
     <Icon name="search" class="text-4xl" />
   </div>
  <DeskNav  client:load/>
   <div class="flex flex-col justify-end items-end text-3xl gap-5 relative z-10">
-    <a class="text-base rotate-90 absolute -top-30 -right-4">jramma &reg;</a>
+    <a href="https://jramma.com" target="_blank" class="text-base rotate-90 absolute -top-30 -right-4">jramma &reg;</a>
     <Icon name="insta" />
     <Icon name="pinterest" />
   </div>
