@@ -30,6 +30,7 @@ const Hamburger: React.FC = () => {
           {Object.entries(URLS).map(([key, value]) => (
             <li key={key} >
               <Link
+                target="_self"
                 href={value.href}
                 rel="noopener noreferrer"
                 text={value.text}
