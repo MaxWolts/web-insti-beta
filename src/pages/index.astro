@@ -3,7 +3,6 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 import HomeMob from "@/components/HomeMob.astro";
 import VerticalCarousel from "@/components/react/VerticalCarousel";
-import Ribbons from "@/components/react/Ribbons";
 ---
 
 <Layout>
@@ -19,19 +18,9 @@ import Ribbons from "@/components/react/Ribbons";
       </p>
     </div>
     <div class="min-h-screen w-1/2 md:block hidden max-h-full overflow-hidden">
-      <VerticalCarousel client:load imageCount={12} basePath="/paints/" />
+      <VerticalCarousel client:load imageCount={10} basePath="/" />
     </div>
     <HomeMob />
     <Hero />
-    <div class="absolute inset-0 hidden md:block z-0">
-      <Ribbons
-        client:load
-        baseThickness={8}
-        speedMultiplier={0.2}
-        maxAge={700}
-        enableFade={true}
-        enableShaderEffect={true}
-      />
-    </div>
   </div>
 </Layout>

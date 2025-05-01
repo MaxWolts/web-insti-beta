@@ -3,6 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import { SITE_TITLE } from '../consts';
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	title: string;
@@ -31,7 +32,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-
+<ClientRouter/>
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 

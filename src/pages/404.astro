@@ -1,0 +1,15 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import MetaBalls from "@/components/react/MetaBalls";
+---
+
+<Layout>
+  <div class="flex flex-grow justify-center items-center">
+    <div class="flex items-center text-9xl font-light">
+      <p>404</p>
+     <p class="text-base">Ups! </p>
+    </div>
+  </div>
+  <MetaBalls client:load />
+</Layout>

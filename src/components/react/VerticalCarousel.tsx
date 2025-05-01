@@ -23,7 +23,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
 
   useEffect(() => {
     const newImages = Array.from({ length: imageCount }, (_, i) => ({
-      src: `${basePath}paint${i + 1}.jpg`,
+      src: `${basePath}img${i + 1}.jpg`,
       alt: `Paint artwork ${i + 1}`,
     }));
     setImages(newImages);

@@ -4,6 +4,8 @@ import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Hamburger from "@/components/react/Hamburger";
 import DeskMenu from "@/components/DeskMenu.astro";
+import Footer from "@/components/Footer.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <!doctype html>
@@ -12,10 +14,15 @@ import DeskMenu from "@/components/DeskMenu.astro";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="flex flex-col items-center min-h-screen">
-    <main class="container px-2 flex flex-col gap-10 overflow-hidden mx-auto flex-grow">
+    <main
+      class="container px-2 flex flex-col gap-10 overflow-hidden mx-auto flex-grow"
+    >
+      <a href="/" class="absolute top-0 left-0">
+        <Icon name="signature" class="h-20 w-20 -" />
+      </a>
       <slot />
       <DeskMenu />
     </main>
     <Hamburger client:load />
-  </body>
+  </body><Footer />
 </html>
