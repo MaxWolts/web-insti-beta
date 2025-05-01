@@ -11,3 +11,12 @@ export const URLS = [
   { href: "/contact", text: "Contact" },
 
 ];
+export type Post ={
+  title: string;
+  date: Date;
+  description: string;
+  tags: string[];
+  image: string;
+  link: string;
+  content: string;
+}

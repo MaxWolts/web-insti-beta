@@ -16,7 +16,7 @@ if (post.id === "img2") {
 import FormattedDate from "@/components/FormattedDate.astro";
 ---
 
-<li class={`md:${getRandomMargin()} + ${margin} relative`}>
+<li class={`${getRandomMargin()} + ${margin} relative`}>
   <a
     href={`/blog/${post.id}/`}
     class="relative flex flex-col gap-2 p-6 max-w-96"
@@ -27,7 +27,7 @@ import FormattedDate from "@/components/FormattedDate.astro";
       <p>{post.data.title}</p>
     </p>
   </a>
-  <p class="absolute rotate-90 -right-6 bottom-24  font-bold">
-    <FormattedDate date={post.data.pubDate} />
+  <p class="absolute rotate-90 -right-6 bottom-24 font-bold">
+    <FormattedDate date={new Date(post.data.pubDate)} />
   </p>
 </li>

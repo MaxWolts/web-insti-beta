@@ -37,7 +37,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col text-right gap-10 pr-10 pt-16"
+            className="flex flex-col text-right gap-10 pr-10  bg-white py-10 rounded-l-xl shadow-md"
           >
             <h1 className="text-4xl font-bold">
               Watercolor art <br /> pieces
