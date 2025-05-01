@@ -18,11 +18,11 @@ const Hamburger: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isVisible]);
   return (
-    <div className="sticky bottom-0 w-full backdrop-blur-xl flex flex-col md:hidden transition-all duration-500 ease-in-out">
+    <div className="fixed bottom-0 max-w-screen left-0 w-full bg-white border flex flex-col md:hidden transition-all duration-500 ease-in-out">
       <nav
         className={`flex flex-col items-center  w-full overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen
-            ? "h-dvh opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center"
+            ? "h-dvh opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center sticky"
             : "h-0 opacity-0 pointer-events-none"
         }`}
       >
