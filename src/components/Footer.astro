@@ -7,31 +7,34 @@ const today = new Date().toLocaleDateString("en-us", {
 import Image from "astro/components/Image.astro";
 import Button from "./Button.astro";
 import img from "@/assets/bg.png";
-
 ---
 
 <footer
   class="relative pt-10 w-full mt-auto md:pb-40 border-t flex flex-col md:flex-row gap-20 -z-10 max-w-screen overflow-hidden"
 >
-  <div class="w-1/2 flex flex-col items-start">
-    <p class="text-5xl font-semibold">Would you like to contact the artist?</p>
-    <Button text="Let's chat" />
-  </div>
-  <div class="md:w-1/2 flex flex-col justify-between md:pr-20">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laboriosam
-      non vel aliquam in rem nesciunt ea maiores totam? Tempore exercitationem
-      commodi,
-    </p>
-    <div class="flex justify-between items-center mt-20 mb-6">
-      <a href="https://jramma.com" target="_blank" class="">jramma &reg;</a>
-
-      <p>{today}</p>
+  <div class="container mx-auto">
+    <div class="w-1/2 flex flex-col items-start">
+      <p class="text-5xl font-semibold">
+        Would you like to contact the artist?
+      </p>
+      <Button text="Let's chat" />
     </div>
+    <div class="md:w-1/2 flex flex-col justify-between md:pr-20">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+        laboriosam non vel aliquam in rem nesciunt ea maiores totam? Tempore
+        exercitationem commodi,
+      </p>
+      <div class="flex justify-between items-center mt-20 mb-6">
+        <a href="https://jramma.com" target="_blank" class="">jramma &reg;</a>
+
+        <p>{today}</p>
+      </div>
+    </div>
+    <img
+      src="/bg.png"
+      alt="Background"
+      class="absolute bottom-0 object-bottom md:right-40 -rotate-90 h-full opacity-30 -z-10"
+    />
   </div>
-  <img
-    src="/bg.png"
-    alt="Background"
-    class="absolute bottom-0 object-bottom md:right-40 -rotate-90 h-full opacity-30 -z-10"
-  />
 </footer>

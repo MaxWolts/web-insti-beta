@@ -15,10 +15,13 @@ import { Icon } from "astro-icon/components";
   </head>
   <body class="flex flex-col items-center min-h-screen relative max-w-screen">
     <main
-      class="container px-2 flex flex-col gap-10 overflow-hidden mx-auto flex-grow"
+      class="container px-2 flex flex-col gap-10 overflow-hidden mx-auto relative"
     >
-      <a href="/" class="absolute top-0 left-0 rounded-b-xl rounded-l-none">
-        <Icon name="signature" class="h-20 w-20 -" />
+      <a
+        href="https://www.jramma.com/"
+        class="absolute top-0 left-0 rounded-b-xl rounded-l-none cursor-pointer z-20"
+      >
+        <Icon name="signature" class="h-20 w-20" />
       </a>
       <slot />
       <DeskMenu />

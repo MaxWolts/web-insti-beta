@@ -1,9 +1,11 @@
 @import "tailwindcss";
 @import "@/styles/fonts/stylesheet.css";
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
 
 @theme {
   --font-sans: "Roboto Condensed", "sans-serif";
   --font-germania: "GermaniaOne", "cursive";
+  --font-fugaz: "Fugaz One", "sans-serif";
   --breakpoint-3xl: 120rem;
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
@@ -22,6 +24,11 @@
 
   .font-londrina{
     font-family: "Londrina Outline", "cursive";
+  }
+  .fugaz-one-regular {
+    font-family: "Fugaz One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
 }
 .animated-link {
