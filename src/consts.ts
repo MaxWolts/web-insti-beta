@@ -15,11 +15,11 @@ export const SOCIAL_LINKS = {
 
 // Navigation URLs
 export const URLS = [
-  { href: "/", text: "Inicio" },
-  { href: "/about", text: "Sobre mí" },
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About me" },
   { href: "/blog", text: "Blog" },
-  { href: "/collection", text: "Colección" },
-  { href: "/contact", text: "Contacto" },
+  { href: "/collection", text: "Collection" },
+  { href: "/contact", text: "Contact" },
   { href: "/rss.xml", text: "RSS" },
 ];
 
@@ -30,8 +30,8 @@ export const RSS_CONFIG = {
   site: SITE_URL,
   author: SITE_AUTHOR,
   email: SITE_EMAIL,
-  language: "es",
-  copyright: `© ${new Date().getFullYear()} ${SITE_AUTHOR}. Todos los derechos reservados.`,
+  language: "en",
+  copyright: `© ${new Date().getFullYear()} ${SITE_AUTHOR}. All rights reserved.`,
 };
 
 // Content collections configuration
@@ -64,7 +64,7 @@ export type SocialLink = keyof typeof SOCIAL_LINKS;
 
 // Utility functions
 export const formatDate = (date: Date): string => {
-  return date.toLocaleDateString("es-ES", {
+  return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
