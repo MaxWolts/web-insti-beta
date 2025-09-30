@@ -21,7 +21,15 @@ import FormattedDate from "@/components/FormattedDate.astro";
     href={`/blog/${post.id}/`}
     class="relative flex flex-col gap-2 p-6 max-w-96"
   >
-    <img src={post.data.heroImage} alt="" class="w-full" />
+    <img
+      src={"/assets" + post.data.heroImage}
+      alt={post.data.title}
+      class="w-full"
+      width={300}
+      height={300}
+      loading="lazy"
+      decoding="async"
+    />
 
     <p class="date font-semibold text-3xl">
       <p>{post.data.title}</p>

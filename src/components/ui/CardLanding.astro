@@ -5,12 +5,18 @@ interface Props {
 const { post } = Astro.props;
 import FormattedDate from "@/components/FormattedDate.astro";
 ---
-
-<a href={`/blog/${post.id}/`} class="relative flex gap-2">
-  <img src={post.data.heroImage} alt="" class="miniature object-cover w-10/12" />
-  <div class="flex flex-col mt-auto w-full justify-baseline flex-grow">
+<a
+  href={`/blog/${post.id}/`}
+  class="relative gap-2 grid md:grid-cols-2 items-start"
+>
+  <img
+    src={"/assets/" + post.data.heroImage}
+    alt=""
+    class="miniature object-cover "
+  />
+  <div class="flex flex-col col-span-1 md:pr-6">
     <p>{post.data.title}</p>
-    <p class="font-bold text-xl max-w-72">{post.data.description}</p>
+    <p class="font-bold text-xl">{post.data.description}</p>
     <div class="flex items-center">
       <FormattedDate date={new Date(post.data.pubDate)} /><span
         class="w-5 text-5xl -mb-7 ml-2">&dot;</span

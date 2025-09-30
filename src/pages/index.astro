@@ -6,20 +6,21 @@ import VerticalCarousel from "@/components/react/VerticalCarousel";
 ---
 
 <Layout>
-  <div class="md:flex-row flex flex-col gap-10 relative md:pr-72">
+  <div class="md:flex-row flex flex-col md:gap-10 relative md:pr-72 flex-grow">
     <div class="relative hidden md:flex flex-1">
       <h2
-        class="max-w-96 text-9xl absolute  text-center z-20 -right-32 bottom-1/2 font-fugaz"
+        class="max-w-96 text-9xl absolute text-center z-20 -right-32 bottom-1/3 font-fugaz"
       >
         Big City Life
       </h2>
-
-      <p class="text-xl absolute bottom-1/4 right-0 rotate-90">jramma.com</p>
-    </div>
-    <div class="min-h-screen w-1/2 md:block hidden max-h-full overflow-hidden">
-      <VerticalCarousel client:load imageCount={10} basePath="/" />
+      <p class="text-xl absolute bottom-1/4 right-0">jramma.com</p>
     </div>
     <HomeMob />
-    <Hero />
+
+    <div
+      class="min-h-screen md:w-1/2 -mt-50 md:mt-0 max-h-full overflow-hidden"
+    >
+      <VerticalCarousel client:load imageCount={10} />
+    </div>
   </div>
 </Layout>

@@ -1,34 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Pivot as HamburgerIcon } from "hamburger-react";
+import React, { useState } from "react";
 import { URLS } from "@/consts";
 
 const Hamburger: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setOpen] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      // Puedes ajustar este valor según necesites
-      const show = window.scrollY > 100;
-      if (show !== isVisible) {
-        setIsVisible(show);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isVisible]);
   return (
-    <div className="fixed bottom-0 max-w-screen left-0 w-full bg-white border flex flex-col md:hidden transition-all duration-500 ease-in-out">
+    <div className="fixed bottom-0  z-50 max-w-screen left-0 w-full bg-white border flex flex-col md:hidden transition-all duration-500 ease-in-out">
       <nav
         className={`flex flex-col items-center  w-full overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen
-            ? "h-dvh opacity-100 bg-white bg-[url('/bg.png')] bg-no-repeat bg-center sticky"
+            ? "h-dvh opacity-100 bg-white  sticky"
             : "h-0 opacity-0 pointer-events-none"
         }`}
       >
         <ul className="my-auto flex flex-col gap-5 text-3xl text-center">
           {Object.entries(URLS).map(([key, value]) => (
-            <li key={key} >
+            <li key={key}>
               <Link
                 target="_self"
                 href={value.href}
@@ -69,9 +55,57 @@ const Hamburger: React.FC = () => {
           All rights reserved © 2023
         </div>
       )}
-
+      {/* Hamburger icon */}
       <div className="z-50 absolute right-2 bottom-4">
-        <HamburgerIcon toggled={isOpen} toggle={setOpen} />
+        <button
+          aria-expanded={isOpen}
+          aria-label="Abrir menú"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-dasharray="16"
+              stroke-dashoffset="16"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="M5 5h14">
+                <animate
+                  fill="freeze"
+                  attributeName="stroke-dashoffset"
+                  dur="0.2s"
+                  values="16;0"
+                />
+              </path>
+              <path d="M5 12h14">
+                <animate
+                  fill="freeze"
+                  attributeName="stroke-dashoffset"
+                  begin="0.2s"
+                  dur="0.2s"
+                  values="16;0"
+                />
+              </path>
+              <path d="M5 19h14">
+                <animate
+                  fill="freeze"
+                  attributeName="stroke-dashoffset"
+                  begin="0.4s"
+                  dur="0.2s"
+                  values="16;0"
+                />
+              </path>
+            </g>
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -86,18 +120,17 @@ const Link: React.FC<{
   text: string;
 }> = ({ href, target, rel, text }) => {
   // Verificar si la URL actual coincide con el href
-  const isCurrent = typeof window !== 'undefined' && window.location.pathname === href;
-  
+  const isCurrent =
+    typeof window !== "undefined" && window.location.pathname === href;
+
   return (
     <a
       href={href}
       target={target}
       rel={rel}
-      className={`animated-link ${isCurrent ? 'font-bold text-4xl' : ''}`}
+      className={`animated-link ${isCurrent ? "font-bold text-4xl" : ""}`}
     >
       {text}
     </a>
   );
 };
-
-  

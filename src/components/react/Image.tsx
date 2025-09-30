@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import {
   Renderer,
   Camera,
@@ -20,10 +20,28 @@ interface ImageProps {
   className?: string;
 }
 
+const assetsGlob = import.meta.glob("/@assets/**/*", { eager: true, as: "url" });
+
+function resolveAssetUrl(inputSrc: string): string {
+  if (inputSrc.startsWith("@assets/")) {
+    const key = "/@assets/" + inputSrc.slice("@assets/".length);
+    const resolved = (assetsGlob as Record<string, string | { default: string }>)[key];
+    if (typeof resolved === "string") return resolved;
+    if (resolved && typeof (resolved as any).default === "string") return (resolved as any).default;
+  }
+  if (inputSrc.startsWith("@public/")) {
+    // Mapear @public/foo/bar.png -> /foo/bar.png (servido desde public)
+    return "/" + inputSrc.slice("@public/".length);
+  }
+  return inputSrc;
+}
+
 export default function Image({ src, alt = "", className = "" }: ImageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  const resolvedSrc = useMemo(() => resolveAssetUrl(src), [src]);
 
   // Efecto de agua con OGL (se activa con el scroll)
   useEffect(() => {
@@ -96,7 +114,7 @@ export default function Image({ src, alt = "", className = "" }: ImageProps) {
     // Cargar la textura de la imagen
     const texture = new Texture(gl);
     const img = new Image();
-    img.src = src;
+    img.src = resolvedSrc;
     img.onload = () => {
       texture.image = img;
       program.uniforms.tMap.value = texture;
@@ -140,7 +158,7 @@ export default function Image({ src, alt = "", className = "" }: ImageProps) {
       window.removeEventListener("scroll", handleScroll);
       gl.getExtension("WEBGL_lose_context")?.loseContext(); // Limpiar WebGL
     };
-  }, [src]);
+  }, [resolvedSrc]);
 
   return (
     <div
@@ -159,7 +177,7 @@ export default function Image({ src, alt = "", className = "" }: ImageProps) {
 
       {/* Fallback para imágenes (opcional) */}
       <img
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
         draggable="false"

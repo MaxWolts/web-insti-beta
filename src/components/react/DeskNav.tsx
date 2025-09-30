@@ -1,33 +1,39 @@
 import { useEffect, useState } from "react";
-import { Pivot as HamburgerIcon } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { URLS } from "@/consts";
+import { Icon } from "@iconify/react";
 
 export default function Navigation() {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
-    if(typeof window !== "undefined" && window.location.pathname === "/") {
+    if (typeof window !== "undefined" && window.location.pathname === "/") {
       setOpen(true);
     }
   }, []);
-
 
   const handleLinkClick = () => {
     setOpen(false);
   };
 
   return (
-    <div className="flex flex-col items-end">
-      {!isOpen && (
+    <div className="flex flex-col items-end absolute top-1/2 right-0">
+      {!isOpen ? (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 1 }}
         >
-          <HamburgerIcon toggled={isOpen} toggle={setOpen} />{" "}
+          <button className="cursor-pointer" onClick={() => setOpen(!isOpen)}>
+            {/* hamburger icon */}
+            <Icon className="w-10 h-10" icon="line-md:menu" />
+          </button>
         </motion.div>
+      ) : (
+        <button className="z-50 text-2xl cursor-pointer" onClick={() => setOpen(false)}>
+          <Icon className="w-8 h-8" icon="line-md:close" />
+        </button>
       )}
 
       <AnimatePresence>
@@ -37,10 +43,10 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col text-right gap-10 pr-10  bg-white py-10 rounded-l-xl shadow-md z-[9999]"
+            className="flex flex-col text-right justify-center gap-10 fixed top-0  right-6 p-10 rounded-l-xl h-screen bg-background"
           >
             <h1 className="text-4xl font-bold">
-              Watercolor art <br /> pieces
+              Big City <br /> Life
             </h1>
             <ul className="text-xl flex flex-col gap-5 z-10">
               {Object.entries(URLS).map(([key, value]) => (

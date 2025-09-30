@@ -9,15 +9,13 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
-  <section class="max-w-[1000px] self-center py-10 px-20">
-    <Icon name="arrow" class="h-20 w-20 animate-bounce rotate-180" />
-  </section>
   <section
-    class="overflow-scroll max-h-fit py- max-w-[1000px] self-center px-6 no-scrollbar"
+    class="overflow-scroll max-h-fit flex flex-col gap-20 py-10 max-w-[1000px] self-center px-6 no-scrollbar"
   >
+    <h1 class="text-4xl md:text-7xl font-fugaz font-bold mx-auto pt-30">My blog</h1>
     <div>
       <div class="grid md:grid-cols-2 gap-x-40 mb-40">
-        <ul class="space-y-8">
+        <ul class="md:space-y-8">
           {
             posts
               .filter((_, index) => index % 2 === 0)
@@ -25,7 +23,7 @@ import { Icon } from "astro-icon/components";
           }
         </ul>
 
-        <ul class="space-y-8">
+        <ul class="md:space-y-8">
           {
             posts
               .filter((_, index) => index % 2 !== 0)
