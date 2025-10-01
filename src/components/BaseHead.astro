@@ -56,3 +56,11 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet"></noscript>
+
+<!-- Preconnect to Iconify API for faster icon loading -->
+<link rel="preconnect" href="https://api.iconify.design" crossorigin>
+
+<!-- Preload critical resources -->
+<link rel="preload" href="/assets/city1.webp" as="image" fetchpriority="high">
+<link rel="preload" href="/assets/city2.webp" as="image">
+<link rel="preload" href="/assets/city3.webp" as="image">

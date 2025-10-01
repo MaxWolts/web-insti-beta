@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { URLS } from "@/consts";
-import { Icon } from "@iconify/react";
+import OptimizedIcon from "../OptimizedIcon";
 
 export default function Navigation() {
   const [isOpen, setOpen] = useState(false);
@@ -25,14 +25,23 @@ export default function Navigation() {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 1 }}
         >
-          <button className="cursor-pointer" onClick={() => setOpen(!isOpen)}>
-            {/* hamburger icon */}
-            <Icon className="w-10 h-10" icon="line-md:menu" />
+          <button 
+            className="cursor-pointer" 
+            onClick={() => setOpen(!isOpen)}
+            aria-label="Open navigation menu"
+            aria-expanded={isOpen}
+          >
+            <OptimizedIcon name="menu" className="w-10 h-10" />
           </button>
         </motion.div>
       ) : (
-        <button className="z-50 text-2xl cursor-pointer" onClick={() => setOpen(false)}>
-          <Icon className="w-8 h-8" icon="line-md:close" />
+        <button 
+          className="z-50 text-2xl cursor-pointer" 
+          onClick={() => setOpen(false)}
+          aria-label="Close navigation menu"
+          aria-expanded={isOpen}
+        >
+          <OptimizedIcon name="close" className="w-8 h-8" />
         </button>
       )}
 

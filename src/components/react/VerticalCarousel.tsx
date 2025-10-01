@@ -130,9 +130,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
             <img
               src={src}
               alt={alt}
-              loading="lazy"
+              loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
               draggable={false}
+              fetchPriority={index === 0 ? "high" : "auto"}
               className={`object-contain ${isMobile ? 'max-h-[80vh] max-w-[90vw]' : 'max-w-full max-h-[80vh]'}`}
             />
           </div>

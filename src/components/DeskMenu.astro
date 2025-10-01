@@ -27,9 +27,9 @@ const searchItems = [
   class="hidden p-2 fixed right-6 md:flex flex-col w-2/12 py-10 justify-between h-full min-h-screen"
 >
   <div class="flex justify-end relative z-10">
-    <SearchBar items={searchItems} client:load />
+    <SearchBar items={searchItems} client:idle />
   </div>
-  <DeskNav client:load />
+  <DeskNav client:idle />
   <div
     class="flex flex-col justify-end items-end text-3xl gap-5 relative z-10 ab"
   >

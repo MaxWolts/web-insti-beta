@@ -29,6 +29,7 @@ const Hamburger: React.FC = () => {
             href="https://www.jramma.com/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Follow us on Instagram"
           >
             <img
               src="/icons/insta.svg"
@@ -40,6 +41,7 @@ const Hamburger: React.FC = () => {
             href="https://www.jramma.com/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Follow us on Pinterest"
           >
             <img
               src="/icons/pinterest.svg"
@@ -129,6 +131,7 @@ const Link: React.FC<{
       target={target}
       rel={rel}
       className={`animated-link ${isCurrent ? "font-bold text-4xl" : ""}`}
+      aria-current={isCurrent ? "page" : undefined}
     >
       {text}
     </a>

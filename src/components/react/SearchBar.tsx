@@ -1,6 +1,6 @@
-import { Icon } from "@iconify/react";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import OptimizedIcon from "../OptimizedIcon";
 
 type SearchItem = { title: string; url: string; collection: string };
 
@@ -50,8 +50,10 @@ export default function SearchBar({ items }: Props) {
       <button
         className="cursor-pointer text-black"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Open search bar"
+        aria-expanded={isOpen}
       >
-        <Icon className="w-8 h-8" icon="line-md:search" />
+        <OptimizedIcon name="search" className="w-8 h-8" />
       </button>
       {isOpen && (
         <motion.div
@@ -83,8 +85,9 @@ export default function SearchBar({ items }: Props) {
                   setIsOpen(false);
                 }}
                 className="cursor-pointer w-10 h-10 font-fugaz text-black"
+                aria-label="Close search bar"
               >
-                <Icon className="w-8 h-8" icon="line-md:close" />
+                <OptimizedIcon name="close" className="w-8 h-8" />
               </button>
             </div>
             <div className="max-h-72 overflow-y-auto bg-muted">

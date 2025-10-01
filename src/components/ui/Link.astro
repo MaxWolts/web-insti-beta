@@ -18,6 +18,12 @@ const {
 const isCurrent = Astro.url.pathname === href;
 ---
 
-<a href={href} target={target} rel={rel} class={`animated-link ${isCurrent ? 'font-semibold text-2xl' : ''}`}>
+<a 
+  href={href} 
+  target={target} 
+  rel={rel} 
+  class={`animated-link ${isCurrent ? 'font-semibold text-2xl' : ''}`}
+  aria-current={isCurrent ? "page" : undefined}
+>
   {text}
 </a>
