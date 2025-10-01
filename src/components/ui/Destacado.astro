@@ -5,6 +5,14 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const hero = post?.data?.heroImage as string;
+const basePath = hero ? `/assets${hero.startsWith('/') ? hero : `/${hero}`}` : '';
+const widths = [640, 768, 1024, 1280, 1536];
+const quality = 60;
+const srcset = basePath
+  ? widths.map((w) => `${basePath}?nf_resize=fit&w=${w}&q=${quality} ${w}w`).join(', ')
+  : '';
+const sizes = "100vw";
 
 var margin = "";
 if (post.id === "img2") {
@@ -27,7 +35,17 @@ if (words.length > 2) {
   class="flex flex-grow h-[100vh] w-full text-white object-cover relative py-10"
 >
 <div class="bg-black">
-  <img src={"/assets/" + post.data.heroImage} alt="" class="w-full h-full object-cover opacity-50" />
+  {hero && (
+    <img
+      src={`${basePath}?nf_resize=fit&w=1280&q=${quality}`}
+      srcset={srcset}
+      sizes={sizes}
+      alt=""
+      class="w-full h-full object-cover opacity-50"
+      loading="lazy"
+      decoding="async"
+    />
+  )}
 </div>
   <div
     class="absolute bottom-16 left-6 font-bold pr-16 flex flex-col gap-3  w-full"
