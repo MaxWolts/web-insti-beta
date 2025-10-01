@@ -26,7 +26,7 @@ const Hamburger: React.FC = () => {
         </ul>
         <div className="flex pb-5">
           <a
-            href="https://www.instagram.com/"
+            href="https://www.jramma.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -37,7 +37,7 @@ const Hamburger: React.FC = () => {
             />
           </a>
           <a
-            href="https://www.pinterest.com/"
+            href="https://www.jramma.com/"
             target="_blank"
             rel="noopener noreferrer"
           >

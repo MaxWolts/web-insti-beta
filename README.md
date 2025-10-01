@@ -106,16 +106,13 @@ const posts = (await getCollection("blog")).sort(
 
 ```bash
 # Install dependencies
-npm install
+bun i
 
 # Start development server
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
-
-# Preview production build
-npm run preview
+bun run build
 ```
 
 ### Content Management
