@@ -20,7 +20,6 @@ export const URLS = [
   { href: "/blog", text: "Blog" },
   { href: "/collection", text: "Collection" },
   { href: "/contact", text: "Contact" },
-  { href: "/rss.xml", text: "RSS" },
 ];
 
 // RSS configuration
