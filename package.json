@@ -1,7 +1,14 @@
 {
-  "name": "lightpaint",
+  "name": "bigcitylife",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "author": "jramma.com",
+  "license": "MIT",
+  "homepage": "https://bigcitylife.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jramma/bigcitylife"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

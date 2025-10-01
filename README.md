@@ -1,6 +1,10 @@
-# LightPaint - Astro Photography Portfolio
+# Big City Life - Astro Photography Portfolio
+
+> Feedback is very welcome—please and thank you! Feel free to open an issue or submit a pull request with suggestions or improvements — [jramma.com](https://jramma.com)
 
 A modern photography portfolio website built with Astro, featuring dynamic content management, interactive galleries, and responsive design.
+
+See it deployed: [bigcitylife.netlify.app](https://bigcitylife.netlify.app/)
 
 ## 🚀 Architecture Overview
 
@@ -43,7 +47,7 @@ The site uses Astro's **Content Collections** for structured content management:
 ```typescript
 // content.config.ts
 const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -56,11 +60,13 @@ const blog = defineCollection({
 ### Content Structure
 
 **Blog Posts** (`src/content/blog/`):
+
 - MDX files with frontmatter metadata
 - Automatic sorting by publication date
 - Rich content with images and text
 
 **Photo Collection** (`src/content/collection/`):
+
 - Gallery items with metadata
 - Hero images and descriptions
 - Organized by publication date
@@ -126,10 +132,10 @@ bun run build
 
 ```markdown
 ---
-title: 'Photo Title'
-description: 'Photo description'
-pubDate: '2024-01-15'
-heroImage: '/assets/photo.webp'
+title: "Photo Title"
+description: "Photo description"
+pubDate: "2024-01-15"
+heroImage: "/assets/photo.webp"
 ---
 
 # Photo Content
@@ -156,11 +162,13 @@ This project serves as a **comprehensive example** for:
 ## 🔧 Customization
 
 ### Styling
+
 - Modify `src/styles/` for custom CSS
 - Update Tailwind config for design system
 - Customize component styles in `src/components/`
 
 ### Content
+
 - Add new content types in `content.config.ts`
 - Create new page templates in `src/pages/`
 - Extend component library in `src/components/`
@@ -189,4 +197,4 @@ This project is open source and available under the MIT License.
 
 **Created by [jramma.com](https://jramma.com)**
 
-*This project serves as an educational resource for photographers and developers looking to build modern, performant portfolio websites with Astro. Feel free to use it as a starting point for your own photography portfolio or as a learning resource for Astro development.*
+_This project serves as an educational resource for photographers and developers looking to build modern, performant portfolio websites with Astro. Feel free to use it as a starting point for your own photography portfolio or as a learning resource for Astro development._
