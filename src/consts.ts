@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 // Site metadata
-export const SITE_TITLE = "Big City Life";
+export const SITE_TITLE = "Tec. en analisis de sistema y desarrollo de software";
 export const SITE_DESCRIPTION = "This is a template for an Astro site";
 export const SITE_URL = "https://bigcitylife.netlify.app";
 export const SITE_AUTHOR = "jramma.com";

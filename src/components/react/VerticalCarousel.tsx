@@ -121,7 +121,8 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         style={{ 
           y: isMobile ? 0 : y, 
           x: isMobile ? x : 0, 
-          willChange: "transform" 
+          willChange: "transform",
+          opacity:0.6,
         }}
         className={`h-full flex gap-10 ${isMobile ? 'flex-row items-center' : 'flex-col'}`}
       >
