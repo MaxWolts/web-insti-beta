@@ -1,23 +1,6 @@
 ---
-const today = new Date().toLocaleDateString("en-us", {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
 import Button from "./Button.astro";
-import { getCollection } from "astro:content";
 import VerticalCarousel from "./react/VerticalCarousel";
-
-const blogEntries = await getCollection("blog");
-const collectionEntries = await getCollection("collection");
-
-// Dividimos el blog en dos columnas para ocupar 2 listas
-const midPoint = Math.ceil(blogEntries.length / 2);
-const blogCol1: any = blogEntries.slice(0, midPoint);
-const blogCol2 = blogEntries.slice(midPoint);
-// Helper para derivar slug desde id (remueve directorio y extensión)
-const toSlugFromId = (id: string) =>
-  id.replace(/^.*\//, "").replace(/\.(md|mdx)$/i, "");
 ---
 
 <footer

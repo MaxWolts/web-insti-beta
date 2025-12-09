@@ -1,7 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import HomeMob from "@/components/HomeMob.astro";
-import VerticalCarousel from "@/components/react/VerticalCarousel";
 import Button from "@/components/Button.astro";
 ---
 
@@ -15,12 +14,6 @@ import Button from "@/components/Button.astro";
       </h2>
     </div>
     <HomeMob />
-
-    <!-- <div
-      class="min-h-screen md:w-1/2 -mt-50 md:mt-0 max-h-full overflow-hidden"
-    >
-      <VerticalCarousel client:load imageCount={10} />
-    </div> -->
     <div
       class="md:w-1/2 flex flex-col gap-6 col-span-1 items-start p-10 md:p-0"
     >
@@ -36,6 +29,11 @@ import Button from "@/components/Button.astro";
           href="https://drive.google.com/drive/folders/1qm6ddAGO9I75vkq0A1icpoSjGuSfg52w"
         />
       </div>
+      <span class="text-amber-300"
+        >Actualmente, la institución se encuentra abierta hasta el 18 de
+        diciembre. Consulta los requisitos de lunes a miércoles desde las 19:30
+        a 21:30.</span
+      >
     </div>
   </div>
 </Layout>

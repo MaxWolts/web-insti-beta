@@ -1,200 +1,116 @@
-# Big City Life - Astro Photography Portfolio
+# Tecnicatura Superior en Análisis de Sistemas y Desarrollo de Software
 
-> Feedback is very welcome—please and thank you! Feel free to open an issue or submit a pull request with suggestions or improvements — [jramma.com](https://jramma.com)
+Página web informativa para la carrera de **Tecnicatura Superior en Análisis de Sistemas y Desarrollo de Software**, perteneciente a una institución educativa.
 
-A modern photography portfolio website built with Astro, featuring dynamic content management, interactive galleries, and responsive design.
+## 🚀 Descripción del Proyecto
 
-See it deployed: [bigcitylife.netlify.app](https://bigcitylife.netlify.app/)
+Este sitio web está desarrollado con Astro y presenta una interfaz moderna y responsiva para promocionar la carrera técnica, mostrando información relevante y un carrusel vertical de imágenes que rotan de manera infinita.
 
-## 🚀 Architecture Overview
+## 🛠️ Tecnologías Utilizadas
 
-This project demonstrates a complete **Astro-based photography portfolio** that combines static site generation with dynamic content management. The architecture follows Astro's file-based routing system and content collections pattern.
+- **Astro 5.14.1** - Generador de sitios estáticos con renderizado híbrido
+- **React 19.1.0** - Componentes interactivos
+- **TypeScript** - Seguridad de tipos y mejor experiencia de desarrollo
+- **Tailwind CSS 4.1.4** - Estilos utilitarios
+- **Framer Motion** - Animaciones suaves
 
-### Key Technologies
-
-- **Astro 5.14.1** - Static site generator with hybrid rendering
-- **React 19.1.0** - Interactive components
-- **TypeScript** - Type safety and better DX
-- **Tailwind CSS 4.1.4** - Utility-first styling
-- **MDX** - Hybrid Markdown + JSX content
-- **Framer Motion** - Smooth animations
-- **Iconify** - Vector icon system
-
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 src/
-├── pages/           # File-based routing
-│   ├── index.astro  # Homepage (/)
-│   ├── about.astro  # About page (/about)
-│   ├── blog/        # Blog section (/blog)
-│   └── collection/  # Gallery section (/collection)
-├── content/         # Content collections
-│   ├── blog/        # Blog posts (MDX)
-│   └── collection/  # Photo gallery (MDX)
-├── components/      # Reusable components
-│   ├── react/       # React components
-│   └── ui/          # Astro components
-└── layouts/         # Page layouts
+├── pages/           # Rutas basadas en archivos
+│   ├── index.astro  # Página principal (/)
+│   ├── about.astro  # Página de información (/about)
+│   └── contact.astro # Página de contacto (/contact)
+├── components/      # Componentes reutilizables
+│   ├── BaseHead.astro    # Metadatos del head
+│   ├── Button.astro      # Botón interactivo
+│   ├── Footer.astro      # Pie de página
+│   ├── HomeMob.astro     # Componente para móviles
+│   └── react/
+│       └── VerticalCarousel.tsx  # Carrusel vertical infinito
+├── layouts/         # Layouts de página
+└── styles/          # Estilos globales
 ```
 
-## 🗂️ Content Management System
+## 🎨 Características Principales
 
-### Content Collections
+### Carrusel Vertical Infinito
 
-The site uses Astro's **Content Collections** for structured content management:
+- **Componente React**: VerticalCarousel con Framer Motion para animaciones suaves
+- **Repetición continua**: Muestra 6 imágenes que rotan infinitamente sin saltos abruptos
+- **Adaptativo**: Scroll vertical en desktop, horizontal en móviles
 
-```typescript
-// content.config.ts
-const blog = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    heroImage: z.string().optional(),
-  }),
-});
-```
+### Componentes Interactivos
 
-### Content Structure
+- **Botón animado**: Efectos hover con transición y flecha
+- **Layout responsivo**: Diseño adaptativo para diferentes tamaños de pantalla
 
-**Blog Posts** (`src/content/blog/`):
+### Optimizaciones de Rendimiento
 
-- MDX files with frontmatter metadata
-- Automatic sorting by publication date
-- Rich content with images and text
+- **Generación estática**: Páginas pre-construidas para rendimiento óptimo
+- **Optimización de imágenes**: Formato WebP con carga diferida
+- **Separación de código**: Optimización automática de paquetes
+- **SEO preparado**: Sitemap automático
 
-**Photo Collection** (`src/content/collection/`):
+## 🛠️ Desarrollo
 
-- Gallery items with metadata
-- Hero images and descriptions
-- Organized by publication date
-
-### Data Flow: Content → Pages
-
-1. **Content Definition**: MDX files with frontmatter in `src/content/`
-2. **Schema Validation**: Zod schemas ensure data integrity
-3. **Data Fetching**: `getCollection()` API in page components
-4. **Rendering**: Astro components with typed props
-
-```javascript
-// Example: Blog index page
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-```
-
-## 🎨 Key Features
-
-### Interactive Components
-
-- **VerticalCarousel**: Smooth vertical image scrolling
-- **SearchBar**: Real-time content search
-- **Hamburger Menu**: Mobile navigation
-- **Responsive Gallery**: Adaptive grid layouts
-
-### Performance Optimizations
-
-- **Static Generation**: Pre-built pages for optimal performance
-- **Image Optimization**: WebP format with lazy loading
-- **Code Splitting**: Automatic bundle optimization
-- **SEO Ready**: Automatic sitemap and RSS generation
-
-## 🛠️ Development
-
-### Prerequisites
+### Prerrequisitos
 
 - Node.js 18+
-- Package manager (npm, yarn, or bun)
+- Gestor de paquetes (npm, yarn, o bun)
 
-### Installation
+### Instalación
 
 ```bash
-# Install dependencies
-bun i
+# Instalar dependencias
+npm i
 
-# Start development server
-bun run dev
+# Iniciar servidor de desarrollo
+npm run dev
 
-# Build for production
-bun run build
+# Construir para producción
+npm run build
 ```
 
-### Content Management
+### Personalización
 
-1. **Add Blog Post**: Create new `.mdx` file in `src/content/blog/`
-2. **Add Photo**: Create new `.mdx` file in `src/content/collection/`
-3. **Update Metadata**: Modify frontmatter in content files
-4. **Deploy**: Changes automatically build and deploy
+#### Cambiar las imágenes del carrusel
 
-### Content File Example
+1. Reemplaza las imágenes en `public/assets/city1.webp` a `city6.webp`
+2. El carrusel se ajusta automáticamente a 6 imágenes
 
-```markdown
----
-title: "Photo Title"
-description: "Photo description"
-pubDate: "2024-01-15"
-heroImage: "/assets/photo.webp"
----
+#### Modificar contenido
 
-# Photo Content
+1. Edita `src/pages/index.astro` para cambiar el texto principal
+2. Modifica `src/components/Footer.astro` para información adicional
+3. Actualiza enlaces y botones según necesidades
 
-Your photo description and content here...
-```
+#### Estilos
 
-## 🎯 Use Cases
+- Modifica `src/styles/global.css` para cambios globales
+- Personaliza clases Tailwind en los componentes
 
-This project serves as a **comprehensive example** for:
+## 📱 Diseño Responsivo
 
-- **Photographers** building portfolio websites
-- **Content Creators** managing image galleries
-- **Developers** learning Astro architecture
-- **Designers** implementing responsive layouts
+- **Enfoque mobile-first** con Tailwind CSS
+- **Layouts adaptativos** para diferentes tamaños de pantalla
+- **Navegación touch-friendly**
+- **Imágenes optimizadas** para dispositivos móviles
 
-## 📱 Responsive Design
+## 🚀 Despliegue
 
-- **Mobile-first** approach with Tailwind CSS
-- **Adaptive layouts** for different screen sizes
-- **Touch-friendly** navigation and interactions
-- **Optimized images** for various devices
+El sitio está optimizado para despliegue en servicios de hosting estático:
 
-## 🔧 Customization
-
-### Styling
-
-- Modify `src/styles/` for custom CSS
-- Update Tailwind config for design system
-- Customize component styles in `src/components/`
-
-### Content
-
-- Add new content types in `content.config.ts`
-- Create new page templates in `src/pages/`
-- Extend component library in `src/components/`
-
-## 📈 Performance
-
-- **Lighthouse Score**: 95+ across all metrics
-- **Core Web Vitals**: Optimized for user experience
-- **Bundle Size**: Minimal JavaScript footprint
-- **Loading Speed**: Sub-second page loads
-
-## 🚀 Deployment
-
-The site is optimized for deployment on:
-
-- **Vercel** (recommended)
+- **Vercel** (recomendado)
 - **Netlify**
 - **GitHub Pages**
-- **Any static hosting service**
+- **Cualquier servicio de hosting estático**
 
-## 📄 License
+## 📄 Licencia
 
-This project is open source and available under the MIT License.
+Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
 ---
 
-**Created by [jramma.com](https://jramma.com)**
-
-_This project serves as an educational resource for photographers and developers looking to build modern, performant portfolio websites with Astro. Feel free to use it as a starting point for your own photography portfolio or as a learning resource for Astro development._
+_Proyecto educativo para promocionar una carrera técnica en desarrollo de software._

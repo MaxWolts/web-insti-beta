@@ -39,9 +39,8 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   }, []);
 
   useEffect(() => {
-    // Genera URLs determinísticas desde /public/assets (servido como /assets/*)
-    const MAX_AVAILABLE = 6; // número de archivos cityN.webp disponibles en public/assets
-    const count = Math.min(Math.max(0, imageCount), MAX_AVAILABLE);
+    // Siempre 6 imágenes disponibles
+    const count = 6;
     const prepared: ImageData[] = Array.from({ length: count }, (_, i) => {
       const index = i + 1;
       return {
@@ -50,8 +49,8 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
       };
     });
 
-    setImages(prepared);
-  }, [imageCount]);
+    setImages([...prepared, ...prepared]);
+  }, []);
 
   useEffect(() => {
     // reinicia posición al cambiar imágenes o velocidad
@@ -69,29 +68,21 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     const distance = (pixelsPerSecond * delta) / 1000; // px por frame
 
     if (isMobile) {
-      // Scroll horizontal en mobile
-      const maxScroll = Math.max(
-        0,
-        content.scrollWidth - container.clientWidth
-      );
-      if (maxScroll <= 0) return;
+      // Infinite loop for horizontal scroll
+      const loopPoint = content.scrollWidth / 2;
 
-      let nextX = x.get() - distance; // desplazamiento hacia la izquierda
-      if (Math.abs(nextX) >= maxScroll - 1) {
-        nextX = 0; // reinicio de bucle
+      let nextX = x.get() - distance;
+      if (-nextX >= loopPoint) {
+        nextX += loopPoint; // Seamless wrap
       }
       x.set(nextX);
     } else {
-      // Scroll vertical en desktop
-      const maxScroll = Math.max(
-        0,
-        content.scrollHeight - container.clientHeight
-      );
-      if (maxScroll <= 0) return;
+      // Infinite loop for vertical scroll
+      const loopPoint = content.scrollHeight / 2;
 
-      let nextY = y.get() - distance; // desplazamiento hacia arriba
-      if (Math.abs(nextY) >= maxScroll - 1) {
-        nextY = 0; // reinicio de bucle
+      let nextY = y.get() - distance;
+      if (-nextY >= loopPoint) {
+        nextY += loopPoint; // Seamless wrap
       }
       y.set(nextY);
     }

@@ -3,7 +3,6 @@ interface Props {
   text: string;
   href?: string;
 }
-import { Icon } from "astro-icon/components";
 
 const { text, href } = Astro.props;
 ---
@@ -16,9 +15,10 @@ const { text, href } = Astro.props;
     class="flex group p-2 w-64 justify-between border-1 border-white absolute -left-1 -top-1 group-hover:-left-4 group-hover:-top-4 transition-all ease-in-out duration-500 cursor-pointer bg-white"
   >
     <p class="mt-auto">{text}</p>
-    <Icon
-      name="arrow"
-      class="w-10 h-10 rotate-45 mb-10 mr-5 group-hover:translate-x-5 group-hover:translate-y-5 transition duration-500"
-    />
+    <div
+      class="w-10 h-10 rotate-45 mb-10 mr-5 group-hover:translate-x-5 group-hover:translate-y-5 transition duration-500 flex items-center justify-center"
+    >
+      →
+    </div>
   </a>
 </div>
